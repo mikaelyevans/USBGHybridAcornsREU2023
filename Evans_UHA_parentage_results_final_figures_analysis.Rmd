@@ -1,0 +1,117 @@
+---
+title: "UHA_Evans_Final_Figures_Parentage_Results"
+author: "Mikaely Evans"
+date: "2023-07-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE, warning=FALSE}
+setwd("C:/Users/MEvans/Documents/UHA_Analysis")
+parentage_results <- UHA_parentage_results
+spatial_parentage_results <- read.csv("UHA_results_df.csv")
+library(dplyr)
+library(ggplot2)
+library(geofi)
+library(sf)
+library(geosphere)
+```
+
+```{r}
+parentage_results %>%
+  group_by(`Mother ID`)  # Group by mother id to be able to separate the maternal trees in the graph
+  ggplot(data = parentage_results) +
+  geom_bar(aes(y=`Candidate father ID`), fill="darkslategrey") +  # bar graph to show offspring by father
+    theme_bw() +
+  facet_wrap(~`Mother ID`, ncol = 4) +  # Separates graph by maternal tree
+  labs(y = "Proposed Father ID",
+       x = "Offspring Count",
+       title = "Maternal Tree Focused Sibling Analysis")
+  
+```
+
+```{r}
+## Emily Schumacher code for creating distance matrix ##
+##calculate distances
+#create a column for distance between mom and dad 
+spatial_parentage_results$distance_between_parents <- NA
+
+#loop to calculate distance between parents
+for(d in 1:nrow(spatial_parentage_results)){
+
+  spatial_parentage_results$distance_between_parents[d] <- distm(spatial_parentage_results[d,7:8], 
+                                                      spatial_parentage_results[d,9:10],
+                                                      fun=distGeo)
+
+}
+
+#calculate mean distance between parents 
+UHA_dist_matrix <- matrix(nrow = length(unique(spatial_parentage_results$Mother_ID)),
+                          ncol = 1)
+for(m in 1:length(unique(spatial_parentage_results$Mother_ID))){
+
+  UHA_dist_matrix[m,1] <- mean(spatial_parentage_results[spatial_parentage_results$Mother_ID == unique(spatial_parentage_results$Mother_ID)[[m]],][,11])
+
+}
+
+#name matrix 
+rownames(UHA_dist_matrix) <- unique(spatial_parentage_results$Mother_ID)
+colnames(UHA_dist_matrix) <- "Mean_Dist_Parents"
+
+##plot different distances between parents 
+pdf("dist_parents.pdf", width = 8, height = 8)
+boxplot(spatial_parentage_results$distance_between_parents~spatial_parentage_results$Mother_ID,
+        ylim = c(0,600), xlab = "Maternal Individual",
+        ylab = "Distance between Parents")
+
+
+# Mikaely Evans code for creating a new column to assign half sibling status to all the offspring
+spatial_parentage_results$half_sibs <- NA  # Made three new columns for this analysis
+spatial_parentage_results$M_Accession_Abrv <- NA  
+spatial_parentage_results$F_Accession_Abrv <- NA
+# Abbreviating the accession numbers for the maternal and paternal trees was necessary to assign half sibling status because it is only necessary to look at the first 6 characters in the accession number to know if the trees came from the same lineage.
+
+spatial_parentage_results$M_Accession_Abrv <- substr(spatial_parentage_results$Mother_Accession, 0, 6)
+# This line adds the Maternal accession abbreviation to the M_Accession_Abrv column
+
+spatial_parentage_results$F_Accession_Abrv <- substr(spatial_parentage_results$Candidate_Father_Accesion, 0, 6)
+# This line adds the paternal accession abbreviation to the F_Accession_Abrv column
+
+spatial_parentage_results <- spatial_parentage_results %>%
+  mutate('Half Siblings' = case_when(M_Accession_Abrv == F_Accession_Abrv ~ "Mating with half siblings",
+                               M_Accession_Abrv != F_Accession_Abrv ~ "Not mating with half siblings"))
+# This chunk above uses mutate to change the 'Half Siblings' column to represent the cases when the maternal accession and paternal accession match, and when they don't. They are represented by short phrases that are easier for readers to understand when they are graphed below.
+
+```
+
+```{r}
+spatial_parentage_results %>%
+  group_by(Mother_ID)  # Grouped by mother ID for analysis across maternal tree
+  ggplot(data = spatial_parentage_results, aes(x = Mother_ID, y = distance_between_parents)) +
+    expand_limits(y = c(0, 600)) +  # set limits for graph
+    theme_minimal() +  # set theme
+    theme_bw() +  # set theme
+  geom_boxplot(fill="darkolivegreen4") +
+  labs(title = "Distance between parents grouped by Maternal Tree",
+       y = "Distance between parents (m)", x = "Maternal Tree ID")  # add labels
+```
+
+
+```{r}
+spatial_parentage_results %>%
+  group_by(`Half Siblings`)  # group by half siblings to compare the status
+  ggplot(data = spatial_parentage_results, aes(x = Mother_ID, y = distance_between_parents,  fill=`Half Siblings`, col = `Half Siblings`)) +  # color and fill by half siblings so you can see the maternal trees who did and didn't mate with half siblings
+    expand_limits(y = c(0, 600)) +  # set limits for graph
+    theme_bw() +
+  geom_boxplot() +
+    scale_fill_brewer(palette="Dark2") +
+    scale_color_brewer(palette = "Dark2") +   # Set colors
+  labs(title = "Distance between parents grouped by half siblings",
+       y = "Distance between parents (m)", x = "Maternal Tree ID")  # set labels
+```
+
+
+
