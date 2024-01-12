@@ -2,6 +2,7 @@
 title: "USBG Hybrid Acorns Project README file"
 author: "Mikaely Evans"
 date: "2023-11-28"
+output: md_document
 ---
 
 ## Project Description
