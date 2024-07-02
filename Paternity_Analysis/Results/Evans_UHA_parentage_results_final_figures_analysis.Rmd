@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-setwd("C:/Users/MEvans/Documents/UHA_Analysis")
+# setwd("C:/Users/MEvans/Documents/UHA_Analysis")
 parentage_results <- UHA_parentage_results
 spatial_parentage_results <- read.csv("UHA_results_df.csv")
 library(dplyr)

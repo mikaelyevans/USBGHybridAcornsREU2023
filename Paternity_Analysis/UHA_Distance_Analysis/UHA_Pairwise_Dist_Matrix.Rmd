@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Loading in necessary libraries and data
 ```{r}
-UHA_Tissue_Database <- read.csv("ARCHIVED_USBG_Hybrid_Acorn_Tissue_Database.csv")
+UHA_Tissue_Database <- read.csv("../../Data_Files/Clean_Data_Files/Clean_csv/ARCHIVED_USBG_Hybrid_Acorn_Tissue_Database.csv")
 library(tidyverse)
 library(geosphere)
 library(tidyr)
@@ -64,7 +64,7 @@ for(i in 1:nrow(combo_dedup)){
 
 # Creating new data set called species combos which includes information from combo_dedup and wether or not the mom/dad pair is a conspecific or heterospecific match.
 ```{r}
-species_combos$Parental_Species_Match <- NA
+combo_dedup$Parental_Species_Match <- NA
 species_combos <- combo_dedup %>%
   mutate(Parent_1_species = str_replace_all(Parent_1_species, "Quercus", "Q.")) %>%
   mutate(Parent_2_species = str_replace_all(Parent_2_species, "Quercus", "Q.")) %>%
