@@ -10,7 +10,7 @@ library(geosphere)
 ######################
 
 #set working directory
-setwd("../..")
+setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
 
 #load in the tissue database, remove offspring which have no coordinates
 UHA_db <- read.csv("Data_Files/CSV_Files/ARCHIVED_USBG_Hybrid_Acorn_Tissue_Database.csv")

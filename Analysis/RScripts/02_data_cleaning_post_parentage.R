@@ -20,10 +20,10 @@ library(geosphere)
 #     Load Data Files     #
 ###########################
 #set working directory 
-#setwd("../..")
+setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
 
 #load parentage results - replacing:
-#par_results <- read.csv("Analysis/Parentage_Analysis/Initial_Run/Output_Files/UHA_parentage_sumary.csv")
+# par_results <- read.csv("Analysis/Parentage_Analysis/Initial_Run/Output_Files/UHA_parentage_sumary.csv")
 
 #load parentage results - all loci = al
 UHA_al_par <- read.csv("Analysis/Parentage_Analysis/All_Loci/Output_Files/UHA_all_loci_par_sum.csv",
@@ -201,20 +201,24 @@ for(sc in 1:length(full_scen)){
 ###################################
 #     Analyze Post Parentage      #
 ###################################
-#sum df 
-null_all_comp_df <- matrix(nrow = length(all_loc_par_sum$Candidate_father_ID),
+#sum df (Mikaely Evans changed all_loci_par_sum to UHA_al_par, the name given in the beginning)
+null_all_comp_df <- matrix(nrow = length(UHA_al_par$Candidate_father_ID),
                            ncol = 3)
-#compare the two columns
-null_all_comp_df[,1] <- all_loc_par_sum$Candidate_father_ID == red_loc_par_sum$Candidate_father_ID #true is 1, false is 0
+#compare the two columns (Mikaely Evans commented out this line to replave it with the line below)
+# null_all_comp_df[,1] <- all_loc_par_sum$Candidate_father_ID == red_loc_par_sum$Candidate_father_ID #true is 1, false is 0
+
+#compare the two columns (Mikaely Evans also changed these titles to what they are named at the beginning of the file)
+null_all_comp_df[,1] <- UHA_al_par$Candidate_father_ID == UHA_rl_par$Candidate_father_ID #true is 1, false is 0
+
 
 #add a column for all loci pair LOD score
-null_all_comp_df[,2] <- all_loc_par_sum$Pair_LOD_score
+null_all_comp_df[,2] <- UHA_al_par$Pair_LOD_score
 
 #add a column for red loci pair LOD score
-null_all_comp_df[,3] <- red_loc_par_sum$Pair_LOD_score
+null_all_comp_df[,3] <- UHA_rl_par$Pair_LOD_score
 
 colnames(null_all_comp_df) <- c("Assigned_Father_Same", "All_Loc_LOD", "Red_Loc_LOD")
-rownames(null_all_comp_df) <- all_loc_par_sum$Offspring_ID
+rownames(null_all_comp_df) <- UHA_al_par$Offspring_ID
 
 
 
@@ -251,3 +255,4 @@ for(n in 1:length(null_all_dif_df[,1])){
 #   UHA_dist_matrix[m,1] <- mean(full_parentage[full_parentage$Mother_ID == unique(full_parentage$Mother_ID)[[m]],][,11])
 #   
 # }
+
