@@ -14,8 +14,8 @@ library(ggplot2)
 ###########################
 
 #load parentage result dfs
-par_scen_df_list <- list.files(path = "Data_Files/CSV_Files/",pattern = "analysis_df.csv")
-
+par_scen_df_list <- list.files(path = "/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023/Data_Files/CSV_Files",pattern = "\\analysis_df.csv")
+print(par_scen_df_list)
 #reorder 
 par_scen_df_list <- list(par_scen_df_list[[1]], par_scen_df_list[[2]],
                          par_scen_df_list[[4]], par_scen_df_list[[3]])
