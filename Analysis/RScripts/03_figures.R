@@ -46,7 +46,7 @@ print(par_scen_df)
 ####barplots of candidate fathers for each mother, over scenario 
 
 #plot bar graphs of the offspring count for each mother and which individual is the father
-png(paste0("Results", full_scen[[1]], "_CF_permom.png"),
+png(paste0("Results/", full_scen[[1]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[1]] %>%
   ggplot() +
@@ -57,7 +57,7 @@ par_scen_df[[1]] %>%
        y = "Candidate Father ID", x = "Count of Offspring")
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[2]], "_CF_permom.png"),
+png(paste0("Results", full_scen[[2]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[2]] %>%
   ggplot() +
@@ -68,7 +68,7 @@ par_scen_df[[2]] %>%
        y = "Candidate Father ID", x = "Count of Offspring")
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[3]], "_CF_permom.png"),
+png(paste0("Results", full_scen[[3]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[3]] %>%
   ggplot() +
@@ -79,7 +79,7 @@ par_scen_df[[3]] %>%
        y = "Candidate Father ID", x = "Count of Offspring")
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[4]], "_CF_permom.png"),
+png(paste0("Results", full_scen[[4]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[4]] %>%
   ggplot() +
@@ -91,7 +91,7 @@ par_scen_df[[4]] %>%
 dev.off()
 
 ###### Boxplot of distances between parents 
-png(paste0("Results/Figures/", full_scen[[1]], "_dist_par.png"),
+png(paste0("Results", full_scen[[1]], "_dist_par.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[1]] %>%
   group_by(c(Mother_ID)) %>% # 
@@ -106,7 +106,7 @@ par_scen_df[[1]] %>%
 
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[2]], "_dist_par.png"), 
+png(paste0("Results", full_scen[[2]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
 par_scen_df[[2]] %>%
   group_by(c(Mother_ID)) %>% # 
@@ -121,7 +121,7 @@ par_scen_df[[2]] %>%
 
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[3]], "_dist_par.png"), 
+png(paste0("Results", full_scen[[3]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
 par_scen_df[[3]] %>%
   group_by(c(Mother_ID)) %>% # 
