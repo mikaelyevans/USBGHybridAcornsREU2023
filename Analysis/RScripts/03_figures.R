@@ -57,7 +57,7 @@ par_scen_df[[1]] %>%
        y = "Candidate Father ID", x = "Count of Offspring")
 dev.off()
 
-png(paste0("Results", full_scen[[2]], "_CF_permom.png"),
+png(paste0("Results/", full_scen[[2]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[2]] %>%
   ggplot() +
@@ -68,7 +68,7 @@ par_scen_df[[2]] %>%
        y = "Candidate Father ID", x = "Count of Offspring")
 dev.off()
 
-png(paste0("Results", full_scen[[3]], "_CF_permom.png"),
+png(paste0("Results/", full_scen[[3]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[3]] %>%
   ggplot() +
@@ -79,7 +79,7 @@ par_scen_df[[3]] %>%
        y = "Candidate Father ID", x = "Count of Offspring")
 dev.off()
 
-png(paste0("Results", full_scen[[4]], "_CF_permom.png"),
+png(paste0("Results/", full_scen[[4]], "_CF_permom.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[4]] %>%
   ggplot() +
@@ -91,7 +91,7 @@ par_scen_df[[4]] %>%
 dev.off()
 
 ###### Boxplot of distances between parents 
-png(paste0("Results", full_scen[[1]], "_dist_par.png"),
+png(paste0("Results/", full_scen[[1]], "_dist_par.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[1]] %>%
   group_by(c(Mother_ID)) %>% # 
@@ -106,7 +106,7 @@ par_scen_df[[1]] %>%
 
 dev.off()
 
-png(paste0("Results", full_scen[[2]], "_dist_par.png"), 
+png(paste0("Results/", full_scen[[2]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
 par_scen_df[[2]] %>%
   group_by(c(Mother_ID)) %>% # 
@@ -121,7 +121,7 @@ par_scen_df[[2]] %>%
 
 dev.off()
 
-png(paste0("Results", full_scen[[3]], "_dist_par.png"), 
+png(paste0("Results/", full_scen[[3]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
 par_scen_df[[3]] %>%
   group_by(c(Mother_ID)) %>% # 
@@ -136,7 +136,7 @@ par_scen_df[[3]] %>%
 
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[4]], "_dist_par.png"), 
+png(paste0("Results/", full_scen[[4]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
 par_scen_df[[4]] %>%
   group_by(c(Mother_ID)) %>% # 
@@ -162,7 +162,7 @@ for(scen in 1:length(full_scen)){
 }
 
 #graph of half-sibling matings group by maternal ID
-png(paste0("Results/Figures/", full_scen[[1]], "_half_sib_dist.png"),
+png(paste0("Results/", full_scen[[1]], "_half_sib_dist.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[1]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
@@ -174,7 +174,7 @@ par_scen_df[[1]] %>%
   theme_bw()
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[2]], "_half_sib_dist.png"),
+png(paste0("Results/", full_scen[[2]], "_half_sib_dist.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[2]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
@@ -186,7 +186,7 @@ par_scen_df[[2]] %>%
   theme_bw()
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[3]], "_half_sib_dist.png"),
+png(paste0("Results/", full_scen[[3]], "_half_sib_dist.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[3]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
@@ -198,7 +198,7 @@ par_scen_df[[3]] %>%
   theme_bw()
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[4]], "_half_sib_dist.png"),
+png(paste0("Results/", full_scen[[4]], "_half_sib_dist.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[4]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
@@ -221,7 +221,7 @@ for(scen in 1:length(full_scen)){
 
 
 #####barplots of the percentage of hybrids 
-png(paste0("Results/Figures/", full_scen[[1]], "_hybrid_per.png"),
+png(paste0("Results/", full_scen[[1]], "_hybrid_per.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[1]] %>%
 ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), 
@@ -235,7 +235,7 @@ ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)),
 
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[2]], "_hybrid_per.png"),
+png(paste0("Results/", full_scen[[2]], "_hybrid_per.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[2]] %>%
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), 
@@ -248,7 +248,7 @@ par_scen_df[[2]] %>%
   theme_bw() 
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[3]], "_hybrid_per.png"),
+png(paste0("Results/", full_scen[[3]], "_hybrid_per.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[3]] %>%
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), 
@@ -261,7 +261,7 @@ par_scen_df[[3]] %>%
   theme_bw() 
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[4]], "_hybrid_per.png"),
+png(paste0("Results/", full_scen[[4]], "_hybrid_per.png"),
     res = 600, width = 5000, height = 3500)
 par_scen_df[[4]] %>%
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), 
@@ -296,7 +296,7 @@ for(scen in 1:length(full_scen)){
 
 
 #now plot species count table
-png(paste0("Results/Figures/", full_scen[[1]], "_species_count.png"),
+png(paste0("Results/", full_scen[[1]], "_species_count.png"),
     res = 600, width = 5000, height = 3500)
 species_count_list[[1]] %>%
   ggplot(aes(x = Species, y=Count))+
@@ -306,7 +306,7 @@ species_count_list[[1]] %>%
   theme_bw()
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[2]], "_species_count.png"),
+png(paste0("Results/", full_scen[[2]], "_species_count.png"),
     res = 600, width = 5000, height = 3500)
 species_count_list[[2]] %>%
   ggplot(aes(x = Species, y=Count))+
@@ -316,7 +316,7 @@ species_count_list[[2]] %>%
   theme_bw()
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[3]], "_species_count.png"),
+png(paste0("Results/", full_scen[[3]], "_species_count.png"),
     res = 600, width = 5000, height = 3500)
 species_count_list[[3]] %>%
   ggplot(aes(x = Species, y=Count))+
@@ -326,7 +326,7 @@ species_count_list[[3]] %>%
   theme_bw()
 dev.off()
 
-png(paste0("Results/Figures/", full_scen[[4]], "_species_count.png"),
+png(paste0("Results/", full_scen[[4]], "_species_count.png"),
     res = 600, width = 5000, height = 3500)
 species_count_list[[4]] %>%
   ggplot(aes(x = Species, y=Count))+
