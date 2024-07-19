@@ -103,10 +103,12 @@ par_scen_df[[1]] %>%
   geom_jitter(aes(color = Hybrid_Status), width = 0.6) +
   geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
-  scale_color_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey")) + # set color for Hybrid Status
+  scale_color_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
+                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color for Hybrid Status
+  labs(color = "Offspring is: ") +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
-        axis.text.x = element_text(size = 14),
+        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
