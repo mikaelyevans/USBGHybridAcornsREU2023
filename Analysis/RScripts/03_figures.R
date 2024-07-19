@@ -129,7 +129,7 @@ par_scen_df[[2]] %>%
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
   geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
-  scale_fill_manual(calues = c("TRUE" = "hotpink", "FALSE" = "grey"),
+  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
   labs(fill = "Offspring is: ") +
   theme(axis.title.x = element_text(size = 16),
@@ -145,7 +145,7 @@ dev.off()
 
 png(paste0("Results/Figures/", full_scen[[3]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
-par_scen_df[[2]] %>%
+par_scen_df[[3]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  #This is making me think that I actually grouped it by count of occurrences lowest to highest instead of highest average distance between parents. As we discussed with Sean, the order is not that important.
   expand_limits(y = c(0, 650)) +  # set limits for graph
@@ -155,7 +155,7 @@ par_scen_df[[2]] %>%
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
   geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
-  scale_fill_manual(calues = c("TRUE" = "hotpink", "FALSE" = "grey"),
+  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
   labs(fill = "Offspring is: ") +
   theme(axis.title.x = element_text(size = 16),
@@ -171,7 +171,7 @@ dev.off()
 
 png(paste0("Results/Figures/", full_scen[[4]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
-par_scen_df[[2]] %>%
+par_scen_df[[4]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  #This is making me think that I actually grouped it by count of occurrences lowest to highest instead of highest average distance between parents. As we discussed with Sean, the order is not that important.
   expand_limits(y = c(0, 650)) +  # set limits for graph
@@ -181,7 +181,7 @@ par_scen_df[[2]] %>%
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
   geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
-  scale_fill_manual(calues = c("TRUE" = "hotpink", "FALSE" = "grey"),
+  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
   labs(fill = "Offspring is: ") +
   theme(axis.title.x = element_text(size = 16),
