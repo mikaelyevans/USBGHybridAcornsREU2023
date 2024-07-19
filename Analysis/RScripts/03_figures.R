@@ -100,11 +100,11 @@ par_scen_df[[1]] %>%
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
-  geom_jitter(aes(fill = Hybrid_Status), width = 0.1, size = 3.25, shape = 21, color = "black") +
+  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
   geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
-                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color for Hybrid Status
+                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
   labs(fill = "Offspring is: ") +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
@@ -125,40 +125,73 @@ par_scen_df[[2]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4") +
-  geom_jitter(color = "grey", fill = "black", width = 0.3) +
-  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
+  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
+  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
+  scale_fill_manual(calues = c("TRUE" = "hotpink", "FALSE" = "grey"),
+                    labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
+  labs(fill = "Offspring is: ") +
+  theme(axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 16),
+        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
+  )
 
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[3]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
-par_scen_df[[3]] %>%
+par_scen_df[[2]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  #This is making me think that I actually grouped it by count of occurrences lowest to highest instead of highest average distance between parents. As we discussed with Sean, the order is not that important.
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4") +
-  geom_jitter(color = "grey", fill = "black", width = 0.3) +
-  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
+  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
+  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
+  scale_fill_manual(calues = c("TRUE" = "hotpink", "FALSE" = "grey"),
+                    labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
+  labs(fill = "Offspring is: ") +
+  theme(axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 16),
+        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
+  )
 
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[4]], "_dist_par.png"), 
     res = 600, width = 5000, height = 3500)
-par_scen_df[[4]] %>%
+par_scen_df[[2]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  #This is making me think that I actually grouped it by count of occurrences lowest to highest instead of highest average distance between parents. As we discussed with Sean, the order is not that important.
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4") +
-  geom_jitter(color = "grey", fill = "black", width = 0.3) +
-  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
+  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
+  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
+  scale_fill_manual(calues = c("TRUE" = "hotpink", "FALSE" = "grey"),
+                    labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
+  labs(fill = "Offspring is: ") +
+  theme(axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 16),
+        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
+  )
 
 dev.off()
 
