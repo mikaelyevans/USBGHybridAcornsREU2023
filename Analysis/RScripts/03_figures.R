@@ -99,10 +99,11 @@ par_scen_df[[1]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4") +
-  geom_jitter(color = "grey", fill = "black", width = 0.3) +
-  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
+  geom_boxplot(fill="darkolivegreen4", coef = 0) + # set color and remove outliers
+  geom_jitter(aes(color = Hybrid_Status), width = 0.3) +
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
+  scale_color_manual(values = c("TRUE" = "pink", "FALSE" = "grey")) # set color for Hybrid Status
 
 dev.off()
 
