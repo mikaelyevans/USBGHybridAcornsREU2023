@@ -99,8 +99,8 @@ par_scen_df[[1]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4", outlier.color = NA) + # set color and remove outliers
-  geom_jitter(aes(color = Hybrid_Status), width = 0.1, size = 1.5, shape = 21, color = "black", stroke = 0.5) +
+  geom_boxplot(fill="darkolivegreen4", outlier = NA) + # set color and remove outliers
+  geom_jitter(aes(fill = Hybrid_Status), width = 0.1, size = 1.5) +
   geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_color_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
