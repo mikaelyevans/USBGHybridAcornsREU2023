@@ -12,11 +12,10 @@ library(ggplot2)
 ###########################
 #     Load Data Files     #
 ###########################
-setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
 
 #load parentage result dfs
-par_scen_df_list <- list.files(path = "Data_Files/CSV_Files",pattern = "analysis_df.csv")
-print(par_scen_df_list)
+par_scen_df_list <- list.files(path = "Data_Files/CSV_Files/",pattern = "analysis_df.csv")
+
 #reorder 
 par_scen_df_list <- list(par_scen_df_list[[1]], par_scen_df_list[[2]],
                          par_scen_df_list[[4]], par_scen_df_list[[3]])
@@ -36,8 +35,6 @@ for(df in 1:length(par_scen_df_list)){
   par_scen_df[[df]] <- read.csv(paste0("Data_Files/CSV_Files/", par_scen_df_list[[df]]))
   
 }
-
-print(par_scen_df)
 
 ###########################
 #     Visualizations      #
@@ -99,22 +96,11 @@ par_scen_df[[1]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
-  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
-  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
-                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ") +
-  theme(axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 14),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 16),
-        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
-  )
-  
+  geom_boxplot(fill="darkolivegreen4") +
+  geom_jitter(color = "grey", fill = "black", width = 0.3) +
+  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
+
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[2]], "_dist_par.png"), 
@@ -125,21 +111,10 @@ par_scen_df[[2]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
-  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
-  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
-                    labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ") +
-  theme(axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 14),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 16),
-        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
-  )
+  geom_boxplot(fill="darkolivegreen4") +
+  geom_jitter(color = "grey", fill = "black", width = 0.3) +
+  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
 
 dev.off()
 
@@ -151,21 +126,10 @@ par_scen_df[[3]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
-  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
-  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
-                    labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ") +
-  theme(axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 14),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 16),
-        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
-  )
+  geom_boxplot(fill="darkolivegreen4") +
+  geom_jitter(color = "grey", fill = "black", width = 0.3) +
+  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
 
 dev.off()
 
@@ -177,21 +141,10 @@ par_scen_df[[4]] %>%
   expand_limits(y = c(0, 650)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
-  geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
-  geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n=", n), y = 645), vjust = -0.5) + 
-  xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
-  scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
-                    labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ") +
-  theme(axis.title.x = element_text(size = 16),
-        axis.title.y = element_text(size = 16),
-        axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 14),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 16),
-        plot.title = element_text(size = 20, hjust = 0.5)  # center the title
-  )
+  geom_boxplot(fill="darkolivegreen4") +
+  geom_jitter(color = "grey", fill = "black", width = 0.3) +
+  geom_text(data = . %>% count(Mother_ID), aes(label = n, y = 645), vjust = -0.5) + 
+  xlab("Maternal Tree ID") + ylab("Distance between parents (m)")
 
 dev.off()
 
@@ -379,4 +332,3 @@ species_count_list[[4]] %>%
        x="Candidate Father Species") +
   theme_bw()
 dev.off()
-
