@@ -14,10 +14,10 @@ library(PopGenReport)
 setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
 
 #load in genepop file as a genind object
-UHA_genind <- read.genepop("Data_Files/Genotype_Files/2024_UHA_genepop.gen", ncode = 2)
+UHA_genind <- read.genepop("Data_Files/Genotype_Files/2024_07_genepop.gen", ncode = 2)
 
 #load score df
-UHA_scores_df <- read.csv("Data_Files/CSV_Files/UHA_score_df.csv")
+UHA_scores_df <- read.csv("Data_Files/CSV_Files/2024_07_UHA_database.csv")
 
 ###############################
 #     Data Cleaning steps     #
@@ -29,7 +29,7 @@ UHA_genind_nomd <- missingno(UHA_genind, type = "geno",
 
 #write out genind object as a genalex file
 genind2genalex(UHA_genind_nomd,
-               "Data_Files/CSV_Files/UHA_Final_Scores_genalex_clean.csv", overwrite = TRUE)
+               "Data_Files/CSV_Files/UHA_genalex_clean.csv", overwrite = TRUE)
 
 #limit by the cleaned individuals
 UHA_scores_clean_df <- UHA_scores_df[UHA_scores_df[,1] %in% 
