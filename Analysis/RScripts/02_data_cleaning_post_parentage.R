@@ -19,8 +19,8 @@ library(geosphere)
 ###########################
 #     Load Data Files     #
 ###########################
-#set working directory 
-#setwd("../..")
+# set working directory 
+setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
 
 #load parentage results - replacing:
 #par_results <- read.csv("Analysis/Parentage_Analysis/Initial_Run/Output_Files/UHA_parentage_sumary.csv")
