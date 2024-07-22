@@ -12,7 +12,7 @@ library(tidyverse)
 ###########################
 
 #set working directoy
-setwd("../..")
+setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
 
 #load in genepop file as a genind object
 UHA_genind <- read.genepop("Data_Files/Genotype_Files/2024_07_genepop.gen", ncode = 2)
