@@ -105,6 +105,7 @@ UHA_database <- read.csv("Data_Files/CSV_Files/ARCHIVED_USBG_Hybrid_Acorn_Tissue
 #all scenarios 
 full_scen <- c("LCF_all_loci", "all_loci", 
                "LCF_red_loci", "red_loci")
+print(par_sum_df_list)
 
 #loop over four scenarios
 for(sc in 1:length(full_scen)){
