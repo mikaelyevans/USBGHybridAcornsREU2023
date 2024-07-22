@@ -13,8 +13,6 @@ library(ggplot2)
 #     Load Data Files     #
 ###########################
 
-setwd("/Users/mikaelyevans/Documents/GitHub/USBGHybridAcornsREU2023")
-
 #load parentage result dfs
 par_scen_df_list <- list.files(path = "Data_Files/CSV_Files/",pattern = "analysis_df.csv")
 
@@ -334,4 +332,3 @@ species_count_list[[4]] %>%
        x="Candidate Father Species") +
   theme_bw()
 dev.off()
-
