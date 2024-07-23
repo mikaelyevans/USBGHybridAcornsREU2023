@@ -98,7 +98,7 @@ par_scen_df[[1]] %>%
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 645), vjust = -0.5) + 
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 665), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
@@ -123,7 +123,7 @@ par_scen_df[[2]] %>%
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 645), vjust = -0.5) + 
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 665), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
@@ -148,7 +148,7 @@ par_scen_df[[3]] %>%
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 645), vjust = -0.5) + 
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 665), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
@@ -173,7 +173,7 @@ par_scen_df[[4]] %>%
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
   geom_jitter(aes(fill = Hybrid_Status), width = 0.2, size = 3.25, shape = 21, color = "black") +
-  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 645), vjust = -0.5) + 
+  geom_text(data = . %>% count(Mother_ID), aes(label = paste("n =", n), y = 665), vjust = -0.5) + 
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
@@ -192,7 +192,7 @@ dev.off()
 
 for(scen in 1:length(full_scen)){
   par_scen_df[[scen]] <- par_scen_df[[scen]] %>%
-  mutate(`Parents Are` = case_when(Half_Sibs == FALSE ~ "Not Half Siblings",
+  mutate(`Parents Are:` = case_when(Half_Sibs == FALSE ~ "Not Half Siblings",
                                                 TRUE ~ "Half Siblings", 
                                                 NA ~ "No Accession Number")
   )
@@ -202,9 +202,9 @@ for(scen in 1:length(full_scen)){
 png(paste0("Results/Figures/", full_scen[[1]], "_half_sib_dist.png"),
     res = 600, width = 5200, height = 3500)
 par_scen_df[[1]] %>%
-  group_by(`Parents Are`) %>%  # group by half siblings to compare the status
-  ggplot(aes(x = Mother_ID, y = dist_par, fill = `Parents Are`)) +  
-  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
+  group_by(`Parents Are:`) %>%  # group by half siblings to compare the status
+  ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par, fill = `Parents Are:`)) +  
+  geom_jitter(aes(fill = `Parents Are:`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
   scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
@@ -222,9 +222,9 @@ dev.off()
 png(paste0("Results/Figures/", full_scen[[2]], "_half_sib_dist.png"),
     res = 600, width = 5200, height = 3500)
 par_scen_df[[2]] %>%
-  group_by(`Parents Are`) %>%  # group by half siblings to compare the status
-  ggplot(aes(x = Mother_ID, y = dist_par, color = `Parents Are`)) +  
-  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
+  group_by(`Parents Are:`) %>%  # group by half siblings to compare the status
+  ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par, color = `Parents Are:`)) +  
+  geom_jitter(aes(fill = `Parents Are:`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
   scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
@@ -242,9 +242,9 @@ dev.off()
 png(paste0("Results/Figures/", full_scen[[3]], "_half_sib_dist.png"),
     res = 600, width = 5200, height = 3500)
 par_scen_df[[3]] %>%
-  group_by(`Parents Are`) %>%  # group by half siblings to compare the status
-  ggplot(aes(x = Mother_ID, y = dist_par, color = `Parents Are`)) +  
-  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
+  group_by(`Parents Are:`) %>%  # group by half siblings to compare the status
+  ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par, color = `Parents Are:`)) +  
+  geom_jitter(aes(fill = `Parents Are:`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
   scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
@@ -262,9 +262,9 @@ dev.off()
 png(paste0("Results/Figures/", full_scen[[4]], "_half_sib_dist.png"),
     res = 600, width = 5200, height = 3500)
 par_scen_df[[4]] %>%
-  group_by(`Parents Are`) %>%  # group by half siblings to compare the status
-  ggplot(aes(x = Mother_ID, y = dist_par, color = `Parents Are`)) +  
-  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
+  group_by(`Parents Are:`) %>%  # group by half siblings to compare the status
+  ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par, color = `Parents Are:`)) +  
+  geom_jitter(aes(fill = `Parents Are:`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
   scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
