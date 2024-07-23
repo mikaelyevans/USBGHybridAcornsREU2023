@@ -204,7 +204,7 @@ png(paste0("Results/Figures/", full_scen[[1]], "_half_sib_dist.png"),
 par_scen_df[[1]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
   ggplot(aes(x = Mother_ID, y = dist_par, fill = `Parents Are`)) +  
-  geom_jitter(width = 0.2, size = 3.25, shape = 21, color = "black") +
+  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3.25, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
   scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
