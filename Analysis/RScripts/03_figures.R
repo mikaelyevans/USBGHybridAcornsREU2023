@@ -89,11 +89,11 @@ dev.off()
 
 ###### Boxplot of distances between parents 
 png(paste0("Results/Figures/", full_scen[[1]], "_dist_par.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[1]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  
-  expand_limits(y = c(0, 650)) +  # set limits for graph
+  expand_limits(y = c(0, 675)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
@@ -102,23 +102,23 @@ par_scen_df[[1]] %>%
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") + 
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ", title = "Distribution of Mating Distances Between Maternal and Paternal Trees") +
+  labs(fill = "Offspring is: ", title = "Fig. 2: Distribution of Mating Distances Between Maternal and Paternal Trees") +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
         axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))  # center the title
+        plot.title = element_text(size = 18, hjust = 0.3))  # center the title
 
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[2]], "_dist_par.png"), 
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[2]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  
-  expand_limits(y = c(0, 650)) +  # set limits for graph
+  expand_limits(y = c(0, 675)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
@@ -127,23 +127,23 @@ par_scen_df[[2]] %>%
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ", title = "Distribution of Mating Distances Between Maternal and Paternal Trees") +
+  labs(fill = "Offspring is: ", title = "Fig. 2: Distribution of Mating Distances Between Maternal and Paternal Trees") +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
         axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))  # center the title
+        plot.title = element_text(size = 18, hjust = 0.3))  # center the title
 
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[3]], "_dist_par.png"), 
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[3]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  
-  expand_limits(y = c(0, 650)) +  # set limits for graph
+  expand_limits(y = c(0, 675)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
@@ -152,23 +152,23 @@ par_scen_df[[3]] %>%
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ", title = "Distribution of Mating Distances Between Maternal and Paternal Trees") +
+  labs(fill = "Offspring is: ", title = "Fig. 2: Distribution of Mating Distances Between Maternal and Paternal Trees") +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
         axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))  # center the title
+        plot.title = element_text(size = 18, hjust = 0.3))  # center the title
 
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[4]], "_dist_par.png"), 
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[4]] %>%
   group_by(c(Mother_ID)) %>% # 
   ggplot(aes(x = fct_rev(fct_infreq(Mother_ID)), y = dist_par)) +  
-  expand_limits(y = c(0, 650)) +  # set limits for graph
+  expand_limits(y = c(0, 675)) +  # set limits for graph
   #theme_minimal() +  # set theme
   theme_bw() +  # set theme
   geom_boxplot(fill="darkolivegreen4", outlier.shape = NA) + # set color and remove outliers
@@ -177,14 +177,14 @@ par_scen_df[[4]] %>%
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
   scale_fill_manual(values = c("TRUE" = "hotpink", "FALSE" = "grey"),
                     labels = c("TRUE" = "Hybrid", "FALSE" = "Not a hybrid")) + # set color and titles for Hybrid Status
-  labs(fill = "Offspring is: ", title = "Distribution of Mating Distances Between Maternal and Paternal Trees") +
+  labs(fill = "Offspring is: ", title = "Fig. 2: Distribution of Mating Distances Between Maternal and Paternal Trees") +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
         axis.text.x = element_text(size = 14, angle = 45, hjust = 1),
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))  # center the title
+        plot.title = element_text(size = 18, hjust = 0.3))  # center the title
 
 dev.off()
 
@@ -200,15 +200,15 @@ for(scen in 1:length(full_scen)){
 
 #graph of half-sibling matings group by maternal ID
 png(paste0("Results/Figures/", full_scen[[1]], "_half_sib_dist.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[1]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
   ggplot(aes(x = Mother_ID, y = dist_par, fill = `Parents Are`)) +  
-  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3.25, shape = 21, color = "black") +
+  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
   scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
-  labs(title = "Distribution of Mating Distances Between Half-Sibling Parents") +
+  labs(title = "Fig. 3: Distribution of Mating Distances Between Half-Sibling Parents") +
   theme_bw() +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
@@ -216,19 +216,19 @@ par_scen_df[[1]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 0.3))
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[2]], "_half_sib_dist.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[2]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
   ggplot(aes(x = Mother_ID, y = dist_par, color = `Parents Are`)) +  
-  geom_jitter(width = 0.2) +
+  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
-  scale_color_manual(values = c("cadetblue", "navy")) +
+  scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
-  labs(title = "Distribution of Mating Distances Between Half-Sibling Parents") +
+  labs(title = "Fig. 3: Distribution of Mating Distances Between Half-Sibling Parents") +
   theme_bw() +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
@@ -236,19 +236,19 @@ par_scen_df[[2]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 0.3))
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[3]], "_half_sib_dist.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[3]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
   ggplot(aes(x = Mother_ID, y = dist_par, color = `Parents Are`)) +  
-  geom_jitter(width = 0.2) +
+  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
-  scale_color_manual(values = c("cadetblue", "navy")) +
+  scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
-  labs(title = "Distribution of Mating Distances Between Half-Sibling Parents") +
+  labs(title = "Fig. 3: Distribution of Mating Distances Between Half-Sibling Parents") +
   theme_bw() +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
@@ -256,19 +256,19 @@ par_scen_df[[3]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 0.3))
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[4]], "_half_sib_dist.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 par_scen_df[[4]] %>%
   group_by(`Parents Are`) %>%  # group by half siblings to compare the status
   ggplot(aes(x = Mother_ID, y = dist_par, color = `Parents Are`)) +  
-  geom_jitter(width = 0.2) +
+  geom_jitter(aes(fill = `Parents Are`), width = 0.2, size = 3, shape = 21, color = "black") +
   expand_limits(y = c(0, 650)) +  # set limits for graph
-  scale_color_manual(values = c("cadetblue", "navy")) +
+  scale_fill_manual(values = c("cadetblue", "navy")) +
   xlab("Maternal Tree ID") + ylab("Distance between parents (m)") +
-  labs(title = "Distribution of Mating Distances Between Half-Sibling Parents") +
+  labs(title = "Fig. 3: Distribution of Mating Distances Between Half-Sibling Parents") +
   theme_bw() +
   theme(axis.title.x = element_text(size = 16),
         axis.title.y = element_text(size = 16),
@@ -276,7 +276,7 @@ par_scen_df[[4]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 0.3))
 dev.off()
 
 #loop to add hybrid status to data frame 
@@ -408,12 +408,12 @@ for(scen in 1:length(full_scen)){
 species_count_list
 #now plot species count table
 png(paste0("Results/Figures/", full_scen[[1]], "_species_count.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 species_count_list[[1]] %>%
   ggplot(aes(x = Species, y=Count))+
   geom_bar(stat = "identity", fill = "darkgreen") + 
   geom_text(aes(label = paste("n =", Count)), vjust = -0.5) +  
-  labs(title="Count of Offspring Produced by Each Candidate Father Tree Species", 
+  labs(title="Fig. 1: Count of Offspring Produced by Each Candidate Father Tree Species", 
        x="Candidate Father Species") +
   theme_bw() +
   theme(axis.title.x = element_text(size = 16),
@@ -422,16 +422,16 @@ species_count_list[[1]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 1))
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[2]], "_species_count.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 species_count_list[[2]] %>%
   ggplot(aes(x = Species, y=Count))+
   geom_bar(stat = "identity", fill = "darkgreen") + 
   geom_text(aes(label = paste("n =", Count)), vjust = -0.5) +
-  labs(title="Count of Offspring Produced by Each Candidate Father Tree Species", 
+  labs(title="Fig. 1: Count of Offspring Produced by Each Candidate Father Tree Species", 
        x="Candidate Father Species") +
   theme_bw() +
   theme(axis.title.x = element_text(size = 16),
@@ -440,16 +440,16 @@ species_count_list[[2]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 1))
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[3]], "_species_count.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 species_count_list[[3]] %>%
   ggplot(aes(x = Species, y=Count))+
   geom_bar(stat = "identity", fill = "darkgreen") + 
   geom_text(aes(label = paste("n =", Count)), vjust = -0.5) +
-  labs(title="Count of Offspring Produced by Each Candidate Father Tree Species", 
+  labs(title="Fig. 1: Count of Offspring Produced by Each Candidate Father Tree Species", 
        x="Candidate Father Species") +
   theme_bw() + 
   theme(axis.title.x = element_text(size = 16),
@@ -458,16 +458,16 @@ species_count_list[[3]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 1))
 dev.off()
 
 png(paste0("Results/Figures/", full_scen[[4]], "_species_count.png"),
-    res = 600, width = 5000, height = 3500)
+    res = 600, width = 5200, height = 3500)
 species_count_list[[4]] %>%
   ggplot(aes(x = Species, y=Count))+
   geom_bar(stat = "identity", fill = "darkgreen") + 
   geom_text(aes(label = paste("n =", Count)), vjust = -0.5) +
-  labs(title="Count of Offspring Produced by Each Candidate Father Tree Species", 
+  labs(title="Fig. 1: Count of Offspring Produced by Each Candidate Father Tree Species", 
        x="Candidate Father Species") +
   theme_bw() + 
   theme(axis.title.x = element_text(size = 16),
@@ -476,6 +476,6 @@ species_count_list[[4]] %>%
         axis.text.y = element_text(size = 14),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 16),
-        plot.title = element_text(size = 18, hjust = 0.5))
+        plot.title = element_text(size = 18, hjust = 1))
 dev.off()
 
