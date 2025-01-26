@@ -258,7 +258,7 @@ UHA_res_df %>%
              y = dist_par)) +  
   geom_boxplot(fill = "darkolivegreen4") +
   geom_jitter(aes(fill = `Hybrid Status`), width = 0.2, size = 3, shape = 21, color = "black") +
-  scale_y_continuous(limits = c(0,1000)) +  # set limits for graph
+  scale_y_continuous(limits = c(0,900)) +  # set limits for graph
   scale_fill_manual(values = c("deeppink", "grey")) +
   geom_text(data = . %>% count(MT_ID), 
             aes(label = paste("n =", n), y = 665), vjust = -3) + 
